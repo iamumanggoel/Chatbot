@@ -1,12 +1,23 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "vercel.py",
+      "src": "app/index.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "vercel.py", "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"] }
+    {
+      "src": "/(.*\\.py)",
+      "dest": "app/index.py"
+    },
+    {
+      "src": "/",
+      "dest": "app/index.py"
+    },
+    {
+      "src": "/(.*\\.js)",
+      "dest": "app/index.py"
+    }
   ]
 }
