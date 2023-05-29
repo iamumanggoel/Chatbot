@@ -7,6 +7,6 @@
   ],
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/.*", "dest": "your_python_file.py" }
+    { "src": "/.*", "dest": "index.py" }
   ]
 }
