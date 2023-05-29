@@ -339,3 +339,32 @@ body, html, * {
     background: rgb(155, 95, 188);
   }
   
+  .msger-send-email-btn {
+    background-color: #9b5fbc;
+    color: white;
+    border: none;
+    padding: 4px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+
+  
+  .send-email-btn {
+    background-color: rgb(155, 95, 188);
+    color: white;
+    border: none;
+    padding: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }

@@ -257,25 +257,41 @@ function appendMessage(name, img, side, text) {
   </div>
   `;
   }
-
   msgerChat.insertAdjacentHTML("beforeend", msgHTML);
   msgerChat.scrollTop += 500;
-}
+  }
 
-function botResponse(rawText) {
-  $.post("/chat", { query: rawText }).done(function (data) {
-    const msgText =  data;
-    conversation += "Koko Assistant: " + msgText + "\n";
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const formattedText = msgText.replace(urlRegex, function (url) {
-      if (url.endsWith('.')) {
-        url = url.slice(0, -1);
+
+
+
+  function botResponse(rawText) {
+    // Bot Response
+    $.post("/chat", { query: rawText }).done(function (data) {
+      let msgText = data;
+      conversation += "Koko Assistant: " + msgText + "\n";
+      const urlRegex = /(https?:\/\/[^\s]+)/g;
+      let formattedText = msgText.replace(urlRegex, function (url) {
+        if (url.endsWith('.') || url.endsWith(')')) {
+          url = url.slice(0, -1);
+        }
+        return '<a href="' + url + '" target="_blank">' + url + '</a>';
+      });
+      if (msgText.includes("smile@kokofaceyoga.com")) {
+        let emailButton = `
+            <button class="send-email-btn" onclick="contactUs()">
+              Contact Us
+            </button>
+          `;
+          formattedText = msgText = msgText.replace(/smile@kokofaceyoga\.com/g, emailButton);
       }
-      return '<a href="' + url + '" target="_blank">' + url + '</a>';
+      appendMessage(BOT_NAME, BOT_IMG, "left", formattedText);
     });
-    const BOT_IMG = "/static/assistant.png";
-    appendMessage(BOT_NAME, BOT_IMG, "left", formattedText);
-  });
+  }
+
+
+function contactUs() {
+  var url = "https://kokofaceyoga.com/contact";
+  window.open(url, "_blank", "width=500,height=600");
 }
 function get(selector, root = document) {
   return root.querySelector(selector);
@@ -287,3 +303,8 @@ function formatDate(date) {
 
   return `${h.slice(-2)}:${m.slice(-2)}`;
 }
+
+function sendEmail() {
+  window.open("https://kokofaceyoga.com/contact", "_blank", "width=500,height=600");
+}
+
