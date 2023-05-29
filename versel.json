@@ -1,15 +1,19 @@
 {
     "version": 2,
     "builds": [
-        {
-            "src": "./index.py",
-            "use": "@vercel/python"
-        }
+      {
+        "src": "./index.py",
+        "use": "@vercel/python"
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
+      {
+        "src": "/(.*)",
+        "dest": "/$1",
+        "headers": {
+          "Content-Type": "text/plain"
         }
+      }
     ]
-}
+  }
+  
