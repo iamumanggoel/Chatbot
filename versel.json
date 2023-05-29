@@ -7,6 +7,6 @@
   ],
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/.*", "dest": "index.py" }
+    { "src": "/(?!.*\\.(js|css|svg|jpg|png|ico|json)$).*", "dest": "index.py" }
   ]
 }
