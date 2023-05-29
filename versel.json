@@ -1,18 +1,14 @@
 {
-    "version": 2,
-    "builds": [
+    "rewrites": [
       {
-        "src": "./index.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/$1",
-        "headers": {
-          "Content-Type": "text/plain"
-        }
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/x-python"
+          }
+        ],
+        "destination": "/$1"
       }
     ]
   }
