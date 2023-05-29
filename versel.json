@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "index.py",
@@ -8,11 +7,22 @@
   ],
   "routes": [
     {
-      "src": "/(.*\\.py)",
-      "dest": "index.py"
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
     },
     {
-      "src": "/",
+      "src": "/templates/(.*)",
+      "dest": "/templates/$1"
+    },
+    {
+      "src": "/static/styles/(.*)",
+      "dest": "/static/styles/$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
       "dest": "index.py"
     }
   ]
