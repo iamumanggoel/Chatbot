@@ -1,18 +1,15 @@
 {
-  "functions": {
-    "api/index": {
-      "runtime": "python3.8",
-      "memory": 1024
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/chat",
-      "destination": "/api/index"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "static/text_widget.js"
-    }
+  "version": 2,
+  "builds": [
+      {
+          "src": "./index.py",
+          "use": "@vercel/python"
+      }
+  ],
+  "routes": [
+      {
+          "src": "/(.*)",
+          "dest": "/"
+      }
   ]
 }
