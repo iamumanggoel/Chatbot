@@ -1,12 +1,12 @@
 {
   "builds": [
     {
-      "src": "index.py",
+      "src": "vercel.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/(?!.*\\.(js|css|svg|jpg|png|ico|json)$).*", "dest": "index.py" }
+    { "src": "/.*", "dest": "vercel.py", "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"] }
   ]
 }
