@@ -1,2 +1,2 @@
-# kokofaceyogachatbot
-LangChain Based Chatbot for kokofaceyoga.com
+# Chatbot
+LangChain Based Chatbot for any particular website
